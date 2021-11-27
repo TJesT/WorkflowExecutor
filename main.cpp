@@ -1,4 +1,3 @@
-﻿// lab-2-c2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 #include "WorkflowExecutor.h"
 #include "WorkflowParser.h"
 #include "Workflow.h"
@@ -25,3 +24,4 @@ int main() {
 
     std::cout << "Done!\n";
 }
+
