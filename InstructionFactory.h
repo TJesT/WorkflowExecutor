@@ -17,10 +17,6 @@ public:
 		static InstructionFactory _instance;
 		return _instance;
 	}
-
-	bool Register(string const& key, Builder const& builder) {
-		return this->_map.insert(std::make_pair(key, builder())).second;
-	}
 	
 	Instruction* Build(std::string const& key) const {
 		auto it = _map.find(key);
@@ -36,7 +32,11 @@ private:
 		this->Register("replace",   InstructionBuilder<Replace>);
 		this->Register("dump",      InstructionBuilder<Dump>);
 	};
-
+	
+	bool Register(string const& key, Builder const& builder) {
+		return this->_map.insert(std::make_pair(key, builder())).second;
+	}
+	
 	static InstructionFactory _instance;
 	map<std::string, Instruction*> _map;
 public:
