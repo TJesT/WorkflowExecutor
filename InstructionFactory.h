@@ -13,8 +13,8 @@ class InstructionFactory {
 public:
 	typedef function<Instruction*()> Builder;
 
-	static InstructionFactory* getInstance() {
-		if (_instance == nullptr) { _instance = new InstructionFactory(); }
+	static InstructionFactory& getInstance() {
+		static InstructionFactory _instance;
 		return _instance;
 	}
 
@@ -37,7 +37,7 @@ private:
 		this->Register("dump",      InstructionBuilder<Dump>);
 	};
 
-	static InstructionFactory* _instance;
+	static InstructionFactory _instance;
 	map<std::string, Instruction*> _map;
 public:
 	InstructionFactory(InstructionFactory const&) = delete;
